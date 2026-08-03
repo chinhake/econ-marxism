@@ -56,14 +56,39 @@ src/
 - [x] 交互沙盘在 ExplanationBlock 中注册接入
 - [x] 详情页全局 interactive 区块接入（concept.interactive）
 - [x] 补全沙盘结构 CSS（原版缺失类）
+- [x] 详情页底部"上一节/下一节"导航（数组下标驱动，跨章节衔接，首尾自动隐藏）
+- [x] 数据去重：删除重复的 id=25（保留审查后版本），现 65 条概念、id 唯一
 
 ## 待办列表
 
 - [ ] （可选）FastAPI 内容管理后台
 
+## 打包 / 分发
+
+**目标：发给别人一个单文件，双击即用，无需终端、无需服务器、断网可用。**
+
+```bash
+npm run build
+```
+
+产物：`dist/index.html`（约 4.3MB，完全自包含）。
+
+**方案 B（已实施）：**
+- `vite-plugin-singlefile`：JS/CSS/数据/mermaid 全部内联进单个 HTML
+- 路由改为 **hash 模式**（`#/concepts/16`），`base: './'` → `file://` 双击可用
+- **mermaid 本地化**：从 CDN 动态加载改为 `npm install mermaid` + 直接 import → 离线可用
+- 构建配置：`codeSplitting: false`（singlefile 自动设置），无需手动合并
+
+**分发：** 把 `dist/index.html` 这一个文件发给对方即可，双击浏览器打开。
+
+**注意：**
+- 开发仍用 `npm run dev`（热更新）；生产分发用 `npm run build` 出单文件
+- 文件名含中文内容，勿用旧版浏览器（需支持 ES2020+）
+- 4.3MB 主要为 mermaid 运行时（约 2MB+）与内容数据（gzip 后 1.2MB）
+
 ## 构建说明
 
-- `vite.config.js` 已设 `chunkSizeWarningLimit: 800`。appData 数据 chunk（gzip 273KB）一次性懒加载，首页不加载；概念库页因搜索/手风琴需要全量数据，属必要加载，不做按章拆分（评估见会话记录）。
+- `vite.config.js` 已设 `chunkSizeWarningLimit: 800`。
 
 ## 迁移说明
 

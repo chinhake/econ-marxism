@@ -17,6 +17,17 @@ const concept = computed(() =>
   appData.concepts.find(c => c.id === id.value)
 )
 
+// 上/下一节：基于数组下标（数组按书顺序排列），跨章节自然衔接
+const conceptIndex = computed(() =>
+  appData.concepts.findIndex(c => c.id === id.value)
+)
+const prevConcept = computed(() =>
+  conceptIndex.value > 0 ? appData.concepts[conceptIndex.value - 1] : null
+)
+const nextConcept = computed(() =>
+  conceptIndex.value < appData.concepts.length - 1 ? appData.concepts[conceptIndex.value + 1] : null
+)
+
 // 全局 interactive（concept.interactive）的类型解析
 const sandboxRegistry = {
   surplus_slider: SurplusSlider,
@@ -106,6 +117,43 @@ onMounted(() => {
           <p v-html="concept.quote"></p>
           <cite v-if="concept.source">—— {{ concept.source }}</cite>
         </blockquote>
+
+        <!-- 8. 上一节 / 下一节 导航 -->
+        <nav class="prev-next-nav">
+          <router-link
+            v-if="prevConcept"
+            :to="`/concepts/${prevConcept.id}`"
+            class="prev-next-link prev"
+          >
+            <span class="pn-arrow">←</span>
+            <span class="pn-text">
+              <small>上一节</small>
+              <span class="pn-title">{{ prevConcept.title }}</span>
+            </span>
+          </router-link>
+
+          <span v-else class="prev-next-link disabled prev">
+            <span class="pn-arrow">←</span>
+            <span class="pn-text">已是第一节</span>
+          </span>
+
+          <router-link
+            v-if="nextConcept"
+            :to="`/concepts/${nextConcept.id}`"
+            class="prev-next-link next"
+          >
+            <span class="pn-text">
+              <small>下一节</small>
+              <span class="pn-title">{{ nextConcept.title }}</span>
+            </span>
+            <span class="pn-arrow">→</span>
+          </router-link>
+
+          <span v-else class="prev-next-link disabled next">
+            <span class="pn-text">已是最后一节</span>
+            <span class="pn-arrow">→</span>
+          </span>
+        </nav>
       </div>
     </article>
   </main>
