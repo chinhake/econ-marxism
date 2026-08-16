@@ -29,6 +29,12 @@ const router = createRouter({
       name: 'quizzes',
       component: () => import('../views/QuizzesView.vue'),
     },
+    {
+      path: '/quizzes/:idx(\\d+)',
+      name: 'quiz-chapter',
+      component: () => import('../views/QuizChapterView.vue'),
+      props: true,
+    },
   ],
 })
 

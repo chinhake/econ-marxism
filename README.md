@@ -6,7 +6,7 @@
 
 - **Vue 3** (`<script setup>` SFC) + **Vue Router 4**
 - **Vite** 构建（开发热更新 HMR + 生产构建）
-- 内容数据：`src/data/appData.js`（唯一内容源，来自原 data.js）
+- 内容数据：`src/data/appData.js`（概念内容源，来自原 data.js）+ `src/data/quizzes.js`（测验数据，由 appData.js 聚合导出）
 
 ## 快速开始
 
@@ -21,7 +21,9 @@ npm run preview   # 预览构建产物
 
 ```
 src/
-├── data/appData.js          # 唯一内容源（66条概念 + quizzes）
+├── data/appData.js          # 概念内容源（65条概念）
+├── data/quizzes.js          # 测验数据（50 道自检题，按章配题）
+├── utils/quizzes.js         # 测验按章分组工具
 ├── router/index.js          # 路由（懒加载）
 ├── views/
 │   ├── HomeView.vue         # 首页
@@ -45,7 +47,7 @@ src/
 - [x] 首页复刻
 - [x] 概念库：章节手风琴 + 搜索过滤
 - [x] 详情页：hook / core / 正文 / mermaid / 概念树 / 现实关联 / 原典引用
-- [x] 测验页逻辑（quizzes 数据目前为空）
+- [x] 测验页：**50 道自检题**（`src/data/quizzes.js`，11 章按内容需要配题 5/6/3/5/5/4/5/4/4/4/5）；章节目录页 + 章节独立页两级结构；自检模式（点击选项：答对绿色、答错标红并显示正确答案与解析，不计分）
 - [x] 路由懒加载代码分割
 - [x] 交互沙盘组件迁移（5种，数据中无 commodity_scanner 未实现）：
   - [x] SurplusSlider（剩余价值滑块）— concept 17 全局

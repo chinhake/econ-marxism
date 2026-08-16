@@ -1,4 +1,6 @@
-﻿export default {
+import quizzes from './quizzes.js'
+
+export default {
   "concepts": [
     {
       "id": 1,
@@ -3210,5 +3212,5 @@
       "source": "马克思、恩格斯：《共产党宣言》"
     }
   ],
-  "quizzes": []
+  "quizzes": quizzes
 };

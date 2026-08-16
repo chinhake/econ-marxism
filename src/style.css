@@ -1,4 +1,4 @@
-﻿
+
 /* =========================================
    Econ·入门 - 全局核心样式表 (完整版 + 交互扩展)
 ========================================= */
@@ -1618,4 +1618,190 @@ p strong {
     overflow-x: auto;
     overflow-y: hidden;
     padding: 0.2rem 0;
+}
+
+/* ==================== 测验页（quizzes.md §7.2） ==================== */
+.quiz-accordion-list {
+    max-width: 860px;
+    margin: 0 auto;
+}
+.quiz-chapter-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    padding: 1rem 0.2rem 1.4rem;
+}
+.quiz-item {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-left: 3px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 1.1rem 1.2rem;
+    box-shadow: var(--shadow-sm);
+}
+.quiz-item-question {
+    font-size: 1.02rem;
+    line-height: 1.65;
+    color: var(--text-heading);
+    margin: 0 0 0.9rem;
+    font-weight: 600;
+}
+.quiz-item-no {
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-right: 0.1rem;
+}
+.options-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+.option-btn {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    text-align: left;
+    padding: 0.7rem 0.9rem;
+    font-size: 0.94rem;
+    line-height: 1.55;
+    background: var(--bg-surface-hover);
+    color: var(--text-heading);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease;
+}
+.option-btn:hover {
+    border-color: var(--primary-color);
+    background: var(--bg-surface);
+}
+.option-letter {
+    flex: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    border-radius: 4px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 0.82rem;
+    margin-top: 0.15rem;
+}
+.option-btn.answer {
+    background: #e8f7ec;
+    border-color: #28a745;
+    color: #1c6b2f;
+    font-weight: 600;
+}
+.option-btn.answer .option-letter {
+    background: #28a745;
+    border-color: #28a745;
+    color: #fff;
+}
+[data-theme="dark"] .option-btn.answer {
+    background: #1e3a26;
+    border-color: #28a745;
+    color: #8fd9a0;
+}
+.answer-tag {
+    flex: none;
+    margin-left: auto;
+    align-self: center;
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+    background: #28a745;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+.option-btn.wrong {
+    background: #fdeaea;
+    border-color: #dc3545;
+    color: #a61e2c;
+    font-weight: 600;
+}
+.option-btn.wrong .option-letter {
+    background: #dc3545;
+    border-color: #dc3545;
+    color: #fff;
+}
+.option-btn.dim {
+    opacity: 0.55;
+}
+[data-theme="dark"] .option-btn.wrong {
+    background: #3a1e1e;
+    border-color: #dc3545;
+    color: #f0a0a0;
+}
+.feedback {
+    margin-top: 0.9rem;
+    padding: 0.8rem 1rem;
+    background: var(--bg-surface-hover);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--primary-color);
+    border-radius: 6px;
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--text-heading);
+}
+.feedback .feedback-body {
+    display: block;
+    margin-top: 0.35rem;
+}
+.feedback.ok {
+    border-left-color: #28a745;
+}
+.feedback.no {
+    border-left-color: #dc3545;
+}
+.quiz-dir-list {
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+.quiz-dir-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.2rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+.quiz-dir-row:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+.quiz-dir-name {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-heading);
+}
+.quiz-dir-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+.quiz-dir-arrow {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+.quiz-chapter-list {
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+.prev-next-nav {
+    margin-top: 1.5rem;
 }

@@ -1,66 +1,33 @@
 <script setup>
-import { ref } from 'vue'
+import { computed } from 'vue'
 import appData from '../data/appData.js'
+import { groupQuizzesByChapter } from '../utils/quizzes.js'
 
-const quizzes = appData.quizzes || []
-const currentIndex = ref(0)
-const selected = ref(null)      // 已选选项下标
-const finished = ref(quizzes.length === 0)
-
-const quiz = quizzes[currentIndex.value]
-
-function selectOption(idx) {
-  if (selected.value !== null) return
-  selected.value = idx
-}
-
-function next() {
-  if (currentIndex.value + 1 < quizzes.length) {
-    currentIndex.value++
-    selected.value = null
-  } else {
-    finished.value = true
-  }
-}
+// 章节目录：按章分组，保持书顺序（章内按 id 升序）
+const groups = computed(() => groupQuizzesByChapter(appData.quizzes))
 </script>
 
 <template>
-  <main class="container quiz-container">
-    <div class="quiz-box">
-      <h2 v-if="finished">测验完成！</h2>
-      <p v-if="finished">理论结合实际，继续保持阅读和思考。</p>
+  <main class="container">
+    <header class="page-header center-header">
+      <h2>政治经济学测验</h2>
+    </header>
 
-      <template v-else>
-        <h2 id="quiz-question">{{ quiz.question }}</h2>
-        <div class="options-group">
-          <button
-            v-for="(option, i) in quiz.options"
-            :key="i"
-            class="option-btn"
-            :class="{
-              correct: selected !== null && i === quiz.answer,
-              wrong: selected === i && i !== quiz.answer,
-            }"
-            :disabled="selected !== null"
-            @click="selectOption(i)"
-          >
-            {{ option }}
-          </button>
-        </div>
+    <div v-if="!groups.length" class="no-results">暂无测验题目。</div>
 
-        <div
-          v-if="selected !== null"
-          class="feedback"
-          :style="{ borderLeft: selected === quiz.answer ? '4px solid #28a745' : '4px solid #dc3545' }"
-        >
-          <strong>{{ selected === quiz.answer ? '回答正确！' : '回答错误。' }}</strong><br>
-          {{ quiz.explanation }}
-        </div>
-
-        <button v-if="selected !== null" id="next-btn" class="btn-primary" @click="next">
-          下一题
-        </button>
-      </template>
+    <div v-else class="accordion-list quiz-dir-list">
+      <router-link
+        v-for="(group, idx) in groups"
+        :key="group.chapter"
+        :to="`/quizzes/${idx + 1}`"
+        class="quiz-dir-row"
+      >
+        <span class="quiz-dir-name">{{ group.chapter }}</span>
+        <span class="quiz-dir-meta">
+          <span class="concept-count">{{ group.items.length }} 题</span>
+          <span class="quiz-dir-arrow">→</span>
+        </span>
+      </router-link>
     </div>
   </main>
 </template>
