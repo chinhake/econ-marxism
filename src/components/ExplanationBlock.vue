@@ -1,4 +1,5 @@
 <script setup>
+import { renderMath } from '../utils/tex'
 import MermaidWrapper from './MermaidWrapper.vue'
 import ConceptMapNode from './ConceptMapNode.vue'
 import SurplusSlider from './sandbox/SurplusSlider.vue'
@@ -28,8 +29,8 @@ function resolveSandbox(block) {
 </script>
 
 <template>
-  <!-- 纯文本段 -->
-  <p v-if="typeof block === 'string'" v-html="block"></p>
+  <!-- 纯文本段（支持 $...$ LaTeX 公式） -->
+  <p v-if="typeof block === 'string'" v-html="renderMath(block)"></p>
 
   <!-- mermaid 图 -->
   <MermaidWrapper

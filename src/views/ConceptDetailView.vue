@@ -2,6 +2,7 @@
 import { computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import appData from '../data/appData.js'
+import { renderMath } from '../utils/tex'
 import MermaidWrapper from '../components/MermaidWrapper.vue'
 import ExplanationBlock from '../components/ExplanationBlock.vue'
 import SurplusSlider from '../components/sandbox/SurplusSlider.vue'
@@ -76,7 +77,7 @@ onMounted(() => {
         <!-- 2. Core -->
         <div v-if="concept.core" class="core-focus-box">
           <div class="core-label">{{ concept.core.title }}</div>
-          <div class="core-definition" v-html="concept.core.definition"></div>
+          <div class="core-definition" v-html="renderMath(concept.core.definition)"></div>
         </div>
 
         <!-- 3. Explanation -->
@@ -106,15 +107,15 @@ onMounted(() => {
           <h4 class="real-world-title">🌍 {{ concept.real_world.title }}</h4>
           <div class="real-world-content">
             <template v-if="Array.isArray(concept.real_world.content)">
-              <p v-for="(p, i) in concept.real_world.content" :key="i" v-html="p"></p>
+              <p v-for="(p, i) in concept.real_world.content" :key="i" v-html="renderMath(p)"></p>
             </template>
-            <p v-else v-html="concept.real_world.content"></p>
+            <p v-else v-html="renderMath(concept.real_world.content)"></p>
           </div>
         </div>
 
         <!-- 7. Quote -->
         <blockquote v-if="concept.quote" class="marx-quote">
-          <p v-html="concept.quote"></p>
+          <p v-html="renderMath(concept.quote)"></p>
           <cite v-if="concept.source">—— {{ concept.source }}</cite>
         </blockquote>
 

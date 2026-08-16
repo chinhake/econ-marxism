@@ -1,8 +1,10 @@
 ﻿<script setup>
 import { useRoute } from 'vue-router'
 import { useTheme } from './composables/useTheme'
+import { useZoom } from './composables/useZoom'
 const route = useRoute()
 const { isDark, toggleTheme } = useTheme()
+const { factor, zoomIn, zoomOut, resetZoom } = useZoom()
 const navItems = [
   { path: '/', label: '首页', exact: true },
   { path: '/concepts', label: '概念库' },
@@ -29,6 +31,12 @@ function isActive(path, exact = false) {
             </router-link>
           </li>
         </ul>
+        <div class="page-zoom" aria-label="页面缩放">
+          <button class="page-zoom-btn" @click="zoomOut" title="缩小（Ctrl+滚轮向下）" :disabled="factor <= 0.8">A−</button>
+          <span class="page-zoom-value">{{ Math.round(factor * 100) }}%</span>
+          <button class="page-zoom-btn" @click="zoomIn" title="放大（Ctrl+滚轮向上）" :disabled="factor >= 1.5">A+</button>
+          <button class="page-zoom-btn page-zoom-reset" @click="resetZoom" title="重置为 100%" :disabled="factor === 1">↺</button>
+        </div>
         <div class="theme-toggle-container" @click="toggleTheme">
             <span class="theme-label">{{ isDark ? '深色模式' : '浅色模式' }}</span>
             <button :class="['theme-toggle-switch', { 'is-dark': isDark }]"

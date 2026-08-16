@@ -265,6 +265,57 @@ a {
     transition: color 0.3s ease;
     letter-spacing: 0.5px;
 }
+
+/* ==================== 页面缩放控制 ==================== */
+.page-zoom {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: var(--bg-surface-hover);
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    padding: 0.15rem 0.5rem;
+    user-select: none;
+}
+
+.page-zoom-btn {
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    color: var(--text-heading);
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+    .page-zoom-btn:hover:not(:disabled) {
+        background: var(--accent-red-bg);
+        color: #fff;
+    }
+
+    .page-zoom-btn:disabled {
+        opacity: 0.35;
+        cursor: default;
+    }
+
+.page-zoom-value {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    min-width: 38px;
+    text-align: center;
+    font-family: monospace;
+}
+
+.page-zoom-reset {
+    font-size: 0.85rem;
+}
 /* --- 2. 首页样式 (index.html) --- */
 .hero {
     background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-surface) 100%);
@@ -1559,4 +1610,12 @@ p strong {
 @media (max-width: 640px) {
     .prev-next-nav { flex-direction: column; }
     .prev-next-link.next { justify-content: flex-start; text-align: left; }
+}
+
+/* ==================== KaTeX 公式 ==================== */
+.katex-display {
+    margin: 0.8rem 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.2rem 0;
 }
