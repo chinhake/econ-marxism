@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import appData from '../data/appData.js'
+import { groupQuizzesByChapter } from '../utils/quizzes.js'
 
 const searchTerm = ref('')
 
@@ -22,6 +23,15 @@ const groupedChapters = computed(() => {
     grouped[chapter].push(concept)
   })
   return grouped
+})
+
+// 章名 → 对应测验页索引与题数（用于每章末尾并列的"本章测验"入口）
+const quizByChapter = computed(() => {
+  const map = {}
+  groupQuizzesByChapter(appData.quizzes).forEach((g, i) => {
+    map[g.chapter] = { idx: i + 1, count: g.items.length }
+  })
+  return map
 })
 </script>
 
@@ -63,6 +73,15 @@ const groupedChapters = computed(() => {
           >
             <span class="icon">🔹</span>
             <span class="title">{{ item.title }}</span>
+          </router-link>
+          <router-link
+            v-if="quizByChapter[chapter]"
+            :to="`/quizzes/${quizByChapter[chapter].idx}`"
+            class="concept-link-item quiz-link-item"
+          >
+            <span class="icon">📝</span>
+            <span class="title">本章测验（{{ quizByChapter[chapter].count }} 题）</span>
+            <span class="quiz-link-arrow">→</span>
           </router-link>
         </div>
       </details>

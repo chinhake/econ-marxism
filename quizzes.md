@@ -93,6 +93,10 @@
 3. **自检模式（不判分、不计分）**：点击选项即作答——答对则正确项绿色高亮；**答错则所选项先标红**，同时正确选项以"正确答案"标签高亮、解析框就地展开（解析框左边框随对错变色）；不锁定、无得分、无完成页；
 4. 分组逻辑抽到 `src/utils/quizzes.js`（导出 `groupQuizzesByChapter(quizzes)`），目录页与章节页共用。
 
+### 7.3 概念库入口（ConceptsView.vue）
+
+- 概念库每个章节折叠块内、最后一节之后，并列追加一条"本章测验（n 题）→"入口（复用 `.concept-link-item` 行样式 + `.quiz-link-item` 虚线边框区分），点击进入对应章节测验页 `/quizzes/:idx`；无测验数据的章节自动隐藏该入口。
+
 ### 7.2 `src/style.css`（追加到末尾）
 
 复用现有变量与首页卡片类 `.card/.card-icon/.features-grid/.btn-link`、概念详情页 `.back-link/.prev-next-nav` 等；新增类：

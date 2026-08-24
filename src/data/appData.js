@@ -1565,11 +1565,11 @@ export default {
             "dept1": {
               "name": "第一部类 (I)",
               "inner": "4400c (内部交换+追加)",
-              "exchange": "1100v + 500m = 1600<br/>需要换取消费资料"
+              "exchange": "1100v + 500m = 1600\n需要换取消费资料"
             },
             "dept2": {
               "name": "第二部类 (II)",
-              "exchange": "1600c (含100Δc)<br/>需要换取生产资料",
+              "exchange": "1600c (含100Δc)\n需要换取生产资料",
               "inner": "800v + 600m (内部消费)"
             },
             "steps": [
@@ -1659,7 +1659,7 @@ export default {
         {
           "type": "mermaid",
           "title": "同一件商品，两种截然不同的看法",
-          "content": "flowchart TD\nclassDef base fill:#f9f9f9,stroke:#888,stroke-width:2px,color:#333\nclassDef stage fill:#f4f6f8,stroke:#4a6fa5,stroke-width:2px,font-weight:bold,color:#1a1a1a\nclassDef effect fill:#fff0f0,stroke:#c41e3a,stroke-width:2px,color:#c41e3a\nclassDef core fill:#c41e3a,stroke:#8b0000,stroke-width:3px,color:#fff,font-weight:bold\n\nA[\"商品价值 = c + v + m\"]:::core --> B[\"马克思的解剖\"]:::stage\nA --> C[\"资本家的账本\"]:::effect\n\nB --> D[\"c：不变资本<br/>旧价值的搬运工<br/>价值量不变\"]:::stage\nB --> E[\"v：可变资本<br/>工人活劳动创造<br/>唯一增殖源\"]:::stage\nB --> F[\"m：剩余价值<br/>工人的无偿劳动<br/>被资本家占有\"]:::stage\n\nC --> G[\"c：买机器买原料<br/>花了钱要收回\"]:::effect\nC --> H[\"v：发工资<br/>也花了钱要收回\"]:::effect\nC --> I[\"c+v=k：生产成本<br/>全部垫付资本的回收\"]:::effect\nC --> J[\"m→p：利润<br/>成本以上的余额<br/>看起来来自全部资本\"]:::effect\n\nD -.-> G\nE -.-> I\nF -.-> J\n\nI ==> K[\"c和v被合并为k<br/>二者的本质区别<br/>被彻底抹去\"]:::core\nJ ==> K\nK ==> L[\"m的来源被遮盖<br/>剥削关系被隐藏\"]:::core"
+          "content": "flowchart TD\nclassDef stage fill:#f4f6f8,stroke:#4a6fa5,stroke-width:2px,font-weight:bold,color:#1a1a1a\nclassDef effect fill:#fff0f0,stroke:#c41e3a,stroke-width:2px,color:#c41e3a\nclassDef core fill:#c41e3a,stroke:#8b0000,stroke-width:2px,color:#fff,font-weight:bold\n\nA[\"商品价值 = c + v + m\"]:::core\n\nsubgraph M[\"马克思的解剖（本质）\"]\n    direction TB\n    B[\"c：不变资本<br/>旧价值的搬运工<br/>价值量不变\"]:::stage\n    C[\"v：可变资本<br/>工人活劳动创造<br/>唯一增殖源\"]:::stage\n    D[\"m：剩余价值<br/>工人的无偿劳动<br/>被资本家占有\"]:::stage\nend\n\nsubgraph R[\"资本家的账本（表象）\"]\n    direction TB\n    E[\"c：买机器买原料<br/>花了钱要收回\"]:::effect\n    F[\"v：发工资<br/>也花了钱要收回\"]:::effect\n    G[\"c+v=k：生产成本<br/>全部垫付资本的回收\"]:::effect\n    H[\"m→p：利润<br/>成本以上的余额<br/>看起来来自全部资本\"]:::effect\nend\n\nA --> M\nA --> R\n\nB -.-> E\nC -.-> F\nD -.-> H\n\nG ==> K[\"c和v被合并为k<br/>二者的本质区别<br/>被彻底抹去\"]:::core\nH ==> K\nK ==> L[\"m的来源被遮盖<br/>剥削关系被隐藏\"]:::core"
         },
         "资本家不劳动。他在商品生产上的全部花费，就是他垫付出去购买生产资料和劳动力的那笔钱——c+v。这两笔支出在他的账本上没有任何质的区别：买棉花花了8,000英镑，付工资花了2,000英镑，加起来10,000英镑——这就是他的\"成本\"。至于工人进了车间之后到底是在搬运旧价值还是在创造新价值——这在资本家的资产负债表上是完全不可见的信息。马克思把资本家视角下的这个c+v命名为<strong>生产成本（k）</strong>。生产成本的引入不是一个无伤大雅的会计科目调整——它完成了一次极其深刻的认知扭曲：原本被严格区分的不变资本和可变资本，现在被不加区分地合并成了一个笼统的\"垫付资本回收项\"。c和v在价值增殖过程中扮演的截然不同的角色——一个是死劳动价值的搬运工，一个是活剩余价值的唯一源泉——在k这个合并项下被一笔勾销了。",
         "从k出发，只消再走一步，剩余价值就会完成整个变装过程。商品价值是c+v+m。当c+v被重新命名为k之后——商品价值就变成了k+m。问题来了：<strong>在资本家的意识里，这个m——这个成本以上的余额——是从哪里来的？</strong>他不是政治经济学家，他没有分析过生产过程中不变资本和可变资本的不同职能。他只看到：我垫付了10,000英镑的总资本——不仅是花在生产上的那部分k，还包括买机器厂房时垫付的、尚未折旧完毕的全部固定资本——我全年的利润和我垫付的全部总资本之间的比率，就是我的\"赚钱效率\"。于是，m不再被看作是v的产物（即工人活劳动的产物），而被当作是<strong>全部垫付总资本的产物</strong>——这就是利润（p）这个范畴的本质规定。马克思一针见血地指出：\"在这个形态上，剩余价值取得了利润这样一个转化形态。\"",

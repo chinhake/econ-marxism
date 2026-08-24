@@ -498,6 +498,24 @@ a {
         font-size: 1.05rem;
     }
 
+/* 概念库每章末尾的"本章测验"入口（与各小节并列） */
+.quiz-link-item {
+    margin-top: 0.3rem;
+    border: 1px dashed var(--border-color);
+}
+.quiz-link-item:hover {
+    border-color: var(--primary-color);
+}
+.quiz-link-item .title {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+.quiz-link-arrow {
+    margin-left: auto;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
 .no-results {
     text-align: center;
     color: var(--text-muted);
@@ -1067,6 +1085,7 @@ p strong {
     border: 2px dashed var(--accent-gold);
     margin: 10px;
     transition: background 0.5s ease;
+    white-space: pre-line; /* 数据中 \n 换行正常生效（与概念35/36沙盘 exchange 字段一致） */
 }
 
 /* 中间交换通道 */
