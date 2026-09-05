@@ -1,4 +1,4 @@
-﻿<script setup>
+<script setup>
 import { useRoute } from 'vue-router'
 import { useTheme } from './composables/useTheme'
 import { useZoom } from './composables/useZoom'
@@ -8,6 +8,7 @@ const { factor, zoomIn, zoomOut, resetZoom } = useZoom()
 const navItems = [
   { path: '/', label: '首页', exact: true },
   { path: '/concepts', label: '概念库' },
+  { path: '/history', label: '历史长廊' },
   { path: '/quizzes', label: '测验' },
 ]
 function isActive(path, exact = false) {

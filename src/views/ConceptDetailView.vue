@@ -114,7 +114,13 @@ onMounted(() => {
         </div>
 
         <!-- 7. Quote -->
-        <blockquote v-if="concept.quote" class="marx-quote">
+        <template v-if="concept.quotes && concept.quotes.length">
+          <blockquote v-for="(q, i) in concept.quotes" :key="i" class="marx-quote">
+            <p v-html="renderMath(q.quote)"></p>
+            <cite v-if="q.source">—— {{ q.source }}</cite>
+          </blockquote>
+        </template>
+        <blockquote v-else-if="concept.quote" class="marx-quote">
           <p v-html="renderMath(concept.quote)"></p>
           <cite v-if="concept.source">—— {{ concept.source }}</cite>
         </blockquote>

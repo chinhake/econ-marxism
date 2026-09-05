@@ -1,4 +1,4 @@
-﻿<script setup>
+<script setup>
     import { ref, onMounted, watch, nextTick } from 'vue'
     import mermaid from 'mermaid'
     import { useTheme } from '../composables/useTheme'
@@ -13,19 +13,28 @@
     const { isDark } = useTheme()
 
     // 初始化 mermaid
-    mermaid.initialize({
+    const getMermaidConfig = () => ({
         startOnLoad: false,
         theme: isDark.value ? 'dark' : 'default',
         securityLevel: 'loose',
+        flowchart: {
+            useMaxWidth: false,
+            htmlLabels: true,
+            curve: 'basis',
+            nodePadding: 16,
+            padding: 20
+        },
+        themeVariables: {
+            fontSize: '13px',
+            fontFamily: '"Microsoft YaHei", "PingFang SC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+        }
     })
+
+    mermaid.initialize(getMermaidConfig())
 
     // 主题切换时重新初始化并渲染图表
     watch(isDark, () => {
-        mermaid.initialize({
-            startOnLoad: false,
-            theme: isDark.value ? 'dark' : 'default',
-            securityLevel: 'loose',
-        })
+        mermaid.initialize(getMermaidConfig())
         renderChart()
     })
 
@@ -86,7 +95,7 @@
     .mermaid-wrapper {
         position: relative;
         width: 100%;
-        margin: 2.5rem 0;
+        margin: 1.2rem 0;
         background: var(--bg-surface);
         border: 1px solid var(--border-color, #e0e0e0);
         border-radius: 8px;
@@ -169,5 +178,19 @@
         transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
         display: flex;
         justify-content: center;
+    }
+
+    :deep(.node foreignObject) {
+        overflow: visible !important;
+    }
+
+    :deep(.node foreignObject div) {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        line-height: 1.4 !important;
+        font-family: "Microsoft YaHei", "PingFang SC", -apple-system, BlinkMacSystemFont, sans-serif !important;
+        font-size: 13px !important;
     }
 </style>

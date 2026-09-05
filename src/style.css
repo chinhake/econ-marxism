@@ -724,6 +724,11 @@ a {
     background: transparent;
 }
 
+.marx-quote + .marx-quote {
+    margin-top: -1rem;
+    border-top: none;
+}
+
     .marx-quote p {
         font-family: "Georgia", "Times New Roman", "Kaiti SC", "KaiTi", "楷体", serif;
         font-size: 1.35rem;
@@ -1823,4 +1828,1817 @@ p strong {
 }
 .prev-next-nav {
     margin-top: 1.5rem;
+}
+
+/* ==========================================================================
+   唯物史观历史长廊（HistoryView）专属样式
+   ========================================================================== */
+.history-page-wrap {
+    padding-bottom: 5rem;
+}
+
+/* 顶部 Hero 区域 */
+.history-hero {
+    background: linear-gradient(135deg, var(--bg-subtle) 0%, var(--bg-surface) 100%);
+    border-bottom: 1px solid var(--border-color);
+    padding: 3.5rem 1.5rem 3rem 1.5rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.history-hero-content {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.hero-tag {
+    display: inline-block;
+    padding: 0.35rem 1rem;
+    background: var(--bg-red-tint);
+    color: var(--accent-red);
+    border: 1px solid rgba(196, 30, 58, 0.2);
+    border-radius: 999px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+}
+
+.hero-title {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--text-heading);
+    margin-bottom: 0.8rem;
+    letter-spacing: -0.5px;
+}
+
+.hero-subtitle {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.hero-intro-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 1.2rem 1.6rem;
+    text-align: left;
+    color: var(--text-main);
+    line-height: 1.8;
+    box-shadow: var(--shadow-sm);
+}
+
+/* 主内容布局：三列居中网格（左占位 + 中间主体居中 + 右侧精简时空轴） */
+.history-container {
+    max-width: 1460px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.history-main-layout {
+    display: grid;
+    grid-template-columns: 210px minmax(0, 960px) 210px;
+    gap: 1.8rem;
+    justify-content: center;
+    align-items: start;
+}
+
+.history-sidebar-spacer {
+    width: 210px;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* 右侧精简粘性时间轴导航 */
+.history-sidebar {
+    width: 210px;
+    position: relative;
+}
+
+.timeline-nav-sticky {
+    position: sticky;
+    top: 5rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 0.85rem 0.65rem;
+    box-shadow: var(--shadow-sm);
+    max-height: calc(100vh - 6rem);
+    overflow-y: auto;
+}
+
+.timeline-nav-header {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-light);
+    margin-bottom: 0.5rem;
+}
+
+.timeline-nav-icon {
+    font-size: 1rem;
+}
+
+.timeline-nav-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    letter-spacing: 0.5px;
+}
+
+.timeline-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    position: relative;
+}
+
+.timeline-nav-list::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 8px;
+    width: 2px;
+    background: var(--border-color);
+    z-index: 1;
+}
+
+.timeline-nav-btn {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.45rem 0.4rem 0.45rem 0.25rem;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.timeline-nav-btn:hover {
+    background: var(--bg-surface-hover);
+}
+
+.timeline-nav-btn.active {
+    background: var(--bg-red-tint);
+}
+
+.nav-step-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--bg-surface);
+    border: 2px solid var(--text-muted);
+    flex-shrink: 0;
+    margin-top: 3px;
+    transition: all 0.15s ease;
+}
+
+.timeline-nav-btn.active .nav-step-dot {
+    border-color: var(--primary-color);
+    background: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(114, 47, 55, 0.2);
+}
+
+.nav-step-dot.red {
+    border-color: var(--accent-red);
+}
+
+.timeline-nav-btn.active .nav-step-dot.red {
+    background: var(--accent-red);
+    box-shadow: 0 0 0 2px rgba(196, 30, 58, 0.25);
+}
+
+.nav-step-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    min-width: 0;
+}
+
+.nav-step-period {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    line-height: 1.2;
+}
+
+.nav-step-name {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-main);
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.timeline-nav-btn.active .nav-step-name {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.timeline-nav-btn.pillars-btn.active .nav-step-name {
+    color: var(--accent-red);
+}
+
+/* 右侧内容流 */
+.history-content-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+    min-width: 0;
+}
+
+/* 每一个历史时期 Article 卡片 */
+.history-era-section {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2.2rem 2.2rem;
+    box-shadow: var(--shadow-card);
+    scroll-margin-top: 5.5rem;
+    transition: box-shadow 0.2s ease;
+}
+
+.history-era-section:hover {
+    box-shadow: var(--shadow-lift);
+}
+
+/* 时期头部 */
+.era-badge-row {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.era-badge {
+    background: var(--primary-color);
+    color: #ffffff;
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 0.25rem 0.75rem;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+}
+
+.era-period-tag {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.era-main-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--text-heading);
+    margin-bottom: 0.4rem;
+    line-height: 1.35;
+}
+
+.era-sub-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--primary-light);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.era-summary-text {
+    font-size: 0.98rem;
+    color: var(--text-main);
+    line-height: 1.8;
+    margin-bottom: 1.8rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid var(--border-light);
+}
+
+/* 双线并进卡片栅格（经济矛盾 vs 工运红旗） */
+.era-dual-track-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.track-card {
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    padding: 1.4rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.track-card.economics-track {
+    background: var(--bg-subtle);
+    border-top: 3px solid var(--accent-blue);
+}
+
+.track-card.labor-track {
+    background: var(--bg-red-tint);
+    border-top: 3px solid var(--accent-red);
+    border-color: rgba(196, 30, 58, 0.25);
+}
+
+.track-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.track-icon {
+    font-size: 1.25rem;
+}
+
+.track-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-heading);
+}
+
+.track-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1;
+}
+
+.mechanism-item {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 0.9rem 1.1rem;
+}
+
+.mech-name {
+    font-size: 0.96rem;
+    font-weight: 700;
+    color: var(--accent-blue);
+    margin-bottom: 0.35rem;
+}
+
+.mech-desc {
+    font-size: 0.88rem;
+    color: var(--text-main);
+    line-height: 1.65;
+    margin: 0;
+}
+
+.labor-intro {
+    font-size: 0.9rem;
+    color: var(--text-main);
+    line-height: 1.6;
+    margin-bottom: 0.2rem;
+}
+
+.labor-milestones-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.labor-milestone-item {
+    background: var(--bg-surface);
+    border: 1px solid rgba(196, 30, 58, 0.15);
+    border-left: 3px solid var(--accent-red);
+    border-radius: 6px;
+    padding: 0.75rem 0.95rem;
+}
+
+.lm-tag-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+    flex-wrap: wrap;
+}
+
+.lm-year {
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: #ffffff;
+    background: var(--accent-red);
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+}
+
+.lm-event {
+    font-size: 0.92rem;
+    color: var(--text-heading);
+}
+
+.lm-detail {
+    font-size: 0.84rem;
+    color: var(--text-main);
+    line-height: 1.55;
+    margin: 0;
+}
+
+/* 图谱、里程碑与关联概念公用头部 */
+.box-section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.9rem;
+}
+
+.box-icon {
+    font-size: 1.15rem;
+}
+
+.box-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-heading);
+}
+
+/* Mermaid 容器 */
+.era-mermaid-box {
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.4rem;
+    margin-bottom: 1.5rem;
+}
+
+/* 标志性历史转折 */
+.era-milestones-box {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 1.5rem;
+}
+
+.milestones-bullet-list {
+    margin: 0;
+    padding-left: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.milestones-bullet-list li {
+    font-size: 0.9rem;
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+/* 关联《资本论》核心概念标签区 */
+.era-related-concepts {
+    background: var(--bg-subtle);
+    border: 1px dashed var(--border-color);
+    border-radius: 12px;
+    padding: 1.2rem 1.4rem;
+}
+
+.concepts-tag-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.concept-link-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0.5rem 0.85rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.concept-link-badge:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card);
+}
+
+.badge-chapter {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    background: var(--bg-subtle);
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+}
+
+.badge-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.badge-arrow {
+    font-size: 0.85rem;
+    color: var(--primary-light);
+    font-weight: 700;
+}
+
+/* 终章：走向社会主义四大客观经济支柱 */
+.socialism-pillars-section {
+    background: linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-red-tint) 100%);
+    border: 2px solid rgba(196, 30, 58, 0.3);
+    border-radius: 20px;
+    padding: 3rem 2.5rem;
+    box-shadow: var(--shadow-lift);
+    scroll-margin-top: 5.5rem;
+}
+
+.pillars-header {
+    text-align: center;
+    max-width: 820px;
+    margin: 0 auto 2.5rem auto;
+}
+
+.pillars-badge {
+    display: inline-block;
+    background: var(--accent-red);
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0.3rem 0.9rem;
+    border-radius: 999px;
+    margin-bottom: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+.pillars-main-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--text-heading);
+    margin-bottom: 0.5rem;
+}
+
+.pillars-sub-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--accent-red);
+    margin-bottom: 1.2rem;
+}
+
+.pillars-conclusion-lead {
+    font-size: 1.02rem;
+    color: var(--text-main);
+    line-height: 1.85;
+}
+
+.pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.pillar-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.6rem;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.pillar-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-red);
+}
+
+.pillar-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.6rem;
+}
+
+.pillar-icon {
+    font-size: 1.8rem;
+}
+
+.pillar-num {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--border-color);
+}
+
+.pillar-name {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent-red);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.3rem;
+}
+
+.pillar-title {
+    font-size: 1.12rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+}
+
+.pillar-desc {
+    font-size: 0.9rem;
+    color: var(--text-main);
+    line-height: 1.75;
+    margin: 0;
+}
+
+/* 终章原著引用 */
+.pillars-quote {
+    margin: 2rem 0;
+    padding: 2rem;
+    border-top: 1px solid rgba(196, 30, 58, 0.2);
+    border-bottom: 1px solid rgba(196, 30, 58, 0.2);
+    background: transparent;
+    text-align: center;
+}
+
+.pillars-quote p {
+    font-family: "Georgia", "Times New Roman", "Kaiti SC", "KaiTi", "楷体", serif;
+    font-size: 1.25rem;
+    color: var(--text-heading);
+    line-height: 2.1;
+    font-style: italic;
+}
+
+.pillars-quote cite {
+    display: block;
+    margin-top: 1.2rem;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-style: normal;
+    text-align: right;
+}
+
+/* 底部操作按钮 */
+.history-bottom-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.bottom-action-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.85rem 1.6rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.bottom-action-btn.primary {
+    background: var(--primary-color);
+    color: #ffffff;
+}
+
+.bottom-action-btn.primary:hover {
+    background: var(--primary-light);
+    transform: translateY(-2px);
+}
+
+.bottom-action-btn.secondary {
+    background: var(--bg-surface);
+    color: var(--text-heading);
+    border: 1px solid var(--border-color);
+}
+
+.bottom-action-btn.secondary:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* 响应式适配 */
+@media (max-width: 1280px) {
+    .history-main-layout {
+        grid-template-columns: minmax(0, 1fr) 200px;
+        gap: 1.5rem;
+    }
+    
+    .history-sidebar-spacer {
+        display: none;
+    }
+}
+
+@media (max-width: 1024px) {
+    .history-main-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .history-sidebar-spacer,
+    .history-sidebar {
+        display: none; /* 平板及手机端隐藏侧边栏，保留单列流式阅读 */
+    }
+
+    .era-dual-track-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pillars-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .history-era-section {
+        padding: 1.5rem 1.2rem;
+    }
+
+    .socialism-pillars-section {
+        padding: 1.8rem 1.2rem;
+    }
+
+    .pillars-main-title {
+        font-size: 1.6rem;
+    }
+}
+
+
+/* ==========================================================================
+   唯物史观历史长廊（HistoryView）专属样式
+   ========================================================================== */
+
+.history-page-wrap {
+    min-height: 100vh;
+    padding-bottom: 5rem;
+    background: var(--bg-main);
+}
+
+/* 顶部 Hero 区域 */
+.history-hero {
+    background: linear-gradient(135deg, var(--bg-subtle) 0%, var(--bg-surface) 100%);
+    border-bottom: 1px solid var(--border-color);
+    padding: 3.5rem 1.5rem 2.5rem 1.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.history-hero-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.hero-tag {
+    display: inline-block;
+    padding: 0.35rem 1rem;
+    background: var(--bg-red-tint);
+    color: var(--accent-red);
+    border: 1px solid rgba(196, 30, 58, 0.2);
+    border-radius: 999px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+}
+
+.hero-title {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--text-heading);
+    margin-bottom: 0.8rem;
+    letter-spacing: -0.5px;
+}
+
+.hero-subtitle {
+    font-size: 1.12rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 1.8rem;
+}
+
+.hero-intro-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 1.2rem 1.5rem;
+    text-align: left;
+    color: var(--text-main);
+    font-size: 0.96rem;
+    line-height: 1.8;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 2rem;
+}
+
+/* [NEW] 首屏“历史长廊全景总览时间轴” (Hero Corridor Map) */
+.hero-corridor-nav {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.2rem;
+    box-shadow: var(--shadow-sm);
+    text-align: left;
+}
+
+.corridor-nav-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    margin-bottom: 0.9rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.corridor-track-scroll {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.6rem;
+}
+
+.corridor-node-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.75rem 0.65rem;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.corridor-node-card:hover {
+    border-color: var(--primary-color);
+    background: var(--bg-surface-hover);
+    transform: translateY(-2px);
+}
+
+.corridor-node-card:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.corridor-node-card.active {
+    border-color: var(--primary-color);
+    background: var(--bg-red-tint);
+    box-shadow: 0 0 0 2px rgba(114, 47, 55, 0.15);
+}
+
+.corridor-node-card.pillars-node {
+    border-left: 3px solid var(--accent-red);
+}
+
+.corridor-node-card.pillars-node.active {
+    border-color: var(--accent-red);
+    background: var(--bg-red-tint);
+}
+
+.node-num {
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: var(--text-muted);
+    margin-bottom: 0.2rem;
+}
+
+.corridor-node-card.active .node-num {
+    color: var(--primary-color);
+}
+
+.node-short-name {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    line-height: 1.3;
+    margin-bottom: 0.2rem;
+}
+
+.corridor-node-card.active .node-short-name {
+    color: var(--primary-color);
+}
+
+.node-period {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+/* [NEW] 移动端吸顶横向导航条 (<= 1024px) */
+.mobile-phase-navbar {
+    display: none;
+    position: sticky;
+    top: 3.8rem;
+    z-index: 95;
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    padding: 0.5rem 1rem;
+}
+
+.mobile-phase-scroll {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.mobile-phase-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.mobile-phase-chip {
+    flex-shrink: 0;
+    padding: 0.35rem 0.75rem;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-main);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+}
+
+.mobile-phase-chip:focus-visible {
+    outline: 2px solid var(--primary-color);
+}
+
+.mobile-phase-chip.active {
+    background: var(--primary-color);
+    color: #ffffff;
+    border-color: var(--primary-color);
+}
+
+.mobile-phase-chip.pillars-chip.active {
+    background: var(--accent-red);
+    border-color: var(--accent-red);
+}
+
+/* 主内容布局：三列居中网格（左占位 + 中间主体居中 + 右侧精简时空轴） */
+.history-container {
+    max-width: 1460px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.history-main-layout {
+    display: grid;
+    grid-template-columns: 210px minmax(0, 960px) 210px;
+    gap: 1.8rem;
+    justify-content: center;
+    align-items: start;
+}
+
+.history-sidebar-spacer {
+    width: 210px;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* 右侧精简粘性时间轴导航 */
+.history-sidebar {
+    width: 210px;
+    position: relative;
+}
+
+.timeline-nav-sticky {
+    position: sticky;
+    top: 5rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 0.85rem 0.65rem;
+    box-shadow: var(--shadow-sm);
+    max-height: calc(100vh - 6rem);
+    overflow-y: auto;
+}
+
+.timeline-nav-header {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-light);
+    margin-bottom: 0.5rem;
+}
+
+.timeline-nav-icon {
+    font-size: 1rem;
+}
+
+.timeline-nav-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    letter-spacing: 0.5px;
+}
+
+.timeline-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    position: relative;
+}
+
+.timeline-nav-list::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 8px;
+    width: 2px;
+    background: var(--border-color);
+    z-index: 1;
+}
+
+.timeline-nav-btn {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.45rem 0.4rem 0.45rem 0.25rem;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.timeline-nav-btn:hover {
+    background: var(--bg-surface-hover);
+}
+
+.timeline-nav-btn:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 1px;
+}
+
+.timeline-nav-btn.active {
+    background: var(--bg-red-tint);
+}
+
+.nav-step-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--bg-surface);
+    border: 2px solid var(--text-muted);
+    flex-shrink: 0;
+    margin-top: 3px;
+    transition: all 0.15s ease;
+}
+
+.timeline-nav-btn.active .nav-step-dot {
+    border-color: var(--primary-color);
+    background: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(114, 47, 55, 0.2);
+}
+
+.nav-step-dot.red {
+    border-color: var(--accent-red);
+}
+
+.timeline-nav-btn.active .nav-step-dot.red {
+    background: var(--accent-red);
+    box-shadow: 0 0 0 2px rgba(196, 30, 58, 0.25);
+}
+
+.nav-step-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    min-width: 0;
+}
+
+.nav-step-period {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    line-height: 1.2;
+}
+
+.nav-step-name {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-main);
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.timeline-nav-btn.active .nav-step-name {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.timeline-nav-btn.pillars-btn.active .nav-step-name {
+    color: var(--accent-red);
+}
+
+/* 核心内容流 */
+.history-content-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+    min-width: 0;
+}
+
+/* 历史时期卡片 */
+.history-era-section {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2.2rem 2.2rem;
+    box-shadow: var(--shadow-card);
+    scroll-margin-top: 5.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.history-era-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--accent-red) 100%);
+}
+
+.era-header {
+    margin-bottom: 2rem;
+}
+
+.era-badge-row {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.era-badge {
+    background: var(--bg-red-tint);
+    color: var(--accent-red);
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.25rem 0.75rem;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+}
+
+.era-period-tag {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-family: monospace;
+}
+
+.era-main-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text-heading);
+    margin-bottom: 0.4rem;
+    line-height: 1.3;
+}
+
+.era-sub-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 1.2rem;
+    line-height: 1.5;
+}
+
+/* 时代命题金句卡 */
+.era-core-proposition {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--accent-red);
+    border-radius: 8px;
+    padding: 0.9rem 1.2rem;
+    margin-bottom: 1.2rem;
+}
+
+.prop-icon {
+    font-size: 1.2rem;
+    line-height: 1.4;
+}
+
+.prop-text {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: var(--text-heading);
+}
+
+.prop-text strong {
+    color: var(--accent-red);
+}
+
+.era-summary-text {
+    font-size: 0.96rem;
+    line-height: 1.8;
+    color: var(--text-main);
+}
+
+/* 双线并进核心卡片区 */
+.era-dual-track-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.track-card {
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.4rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.track-card.economics-track {
+    border-top: 3px solid var(--primary-color);
+}
+
+.track-card.labor-track {
+    border-top: 3px solid var(--accent-red);
+}
+
+.track-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.7rem;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.track-icon {
+    font-size: 1.3rem;
+}
+
+.track-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-heading);
+}
+
+.track-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+.mechanism-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.mech-name {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    line-height: 1.4;
+}
+
+.mech-desc {
+    font-size: 0.88rem;
+    color: var(--text-main);
+    line-height: 1.65;
+}
+
+.labor-intro {
+    font-size: 0.9rem;
+    color: var(--text-main);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.labor-milestones-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.labor-milestone-item {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-left: 3px solid var(--accent-red);
+    border-radius: 6px;
+    padding: 0.8rem 0.9rem;
+}
+
+.lm-tag-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.35rem;
+    flex-wrap: wrap;
+}
+
+.lm-year {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #ffffff;
+    background: var(--accent-red);
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+}
+
+.lm-event {
+    font-size: 0.88rem;
+    color: var(--text-heading);
+}
+
+.lm-detail {
+    font-size: 0.85rem;
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+/* 可折叠深度扩展区 (Accordion) */
+.era-accordion-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.accordion-item {
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: border-color 0.2s ease;
+}
+
+.accordion-item:hover {
+    border-color: var(--border-hover);
+}
+
+.accordion-trigger {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.9rem 1.2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    user-select: none;
+}
+
+.accordion-trigger:focus-visible {
+    outline: 2px solid var(--primary-color);
+}
+
+.acc-title-left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.92rem;
+    color: var(--text-heading);
+}
+
+.acc-icon {
+    font-size: 1.1rem;
+}
+
+.acc-hint {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.acc-chevron {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.accordion-panel {
+    padding: 0 1.2rem 1.2rem 1.2rem;
+    border-top: 1px solid var(--border-light);
+}
+
+.chart-panel {
+    padding-top: 0.8rem;
+}
+
+.chart-read-tip {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    background: var(--bg-surface);
+    border-left: 3px solid var(--primary-color);
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+}
+
+.accordion-item.static-item {
+    background: var(--bg-surface);
+}
+
+.accordion-static-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.9rem 1.2rem 0.6rem 1.2rem;
+    font-size: 0.92rem;
+    color: var(--text-heading);
+}
+
+.static-panel {
+    border-top: none;
+}
+
+/* 标志性转折列表 */
+.milestones-bullet-list {
+    margin: 0.8rem 0 0 0;
+    padding-left: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.milestones-bullet-list li {
+    font-size: 0.88rem;
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+/* 概念标签 */
+.concepts-tag-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.concept-link-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 0.4rem 0.75rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.concept-link-badge:hover {
+    border-color: var(--primary-color);
+    background: var(--bg-surface);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.concept-link-badge:focus-visible {
+    outline: 2px solid var(--primary-color);
+}
+
+.badge-chapter {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    background: var(--bg-surface);
+    padding: 0.1rem 0.35rem;
+    border-radius: 3px;
+}
+
+.badge-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.badge-arrow {
+    font-size: 0.8rem;
+    color: var(--primary-light);
+    font-weight: 700;
+}
+
+/* 史料出处列表 */
+.sources-panel {
+    padding-top: 0.8rem;
+}
+
+.sources-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.source-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+.source-tag {
+    flex-shrink: 0;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+}
+
+.source-text {
+    color: var(--text-main);
+}
+
+/* 终章：走向社会主义四大客观经济支柱 */
+.socialism-pillars-section {
+    background: linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-red-tint) 100%);
+    border: 2px solid rgba(196, 30, 58, 0.3);
+    border-radius: 20px;
+    padding: 3rem 2.5rem;
+    box-shadow: var(--shadow-lift);
+    scroll-margin-top: 5.5rem;
+}
+
+.pillars-header {
+    text-align: center;
+    max-width: 820px;
+    margin: 0 auto 2.5rem auto;
+}
+
+.pillars-badge {
+    display: inline-block;
+    background: var(--accent-red);
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0.3rem 0.9rem;
+    border-radius: 999px;
+    margin-bottom: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+.pillars-main-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-heading);
+    margin-bottom: 0.5rem;
+}
+
+.pillars-sub-title {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+}
+
+.pillars-conclusion-lead {
+    font-size: 0.98rem;
+    line-height: 1.85;
+    color: var(--text-main);
+}
+
+.pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.pillar-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.6rem;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.pillar-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-red);
+}
+
+.pillar-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.6rem;
+}
+
+.pillar-icon {
+    font-size: 1.8rem;
+}
+
+.pillar-num {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--border-color);
+}
+
+.pillar-name {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent-red);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.3rem;
+}
+
+.pillar-title {
+    font-size: 1.12rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    margin-bottom: 0.6rem;
+    line-height: 1.4;
+}
+
+.pillar-desc {
+    font-size: 0.9rem;
+    color: var(--text-main);
+    line-height: 1.7;
+}
+
+.pillars-quote {
+    background: var(--bg-surface);
+    border-left: 4px solid var(--accent-red);
+    border-radius: 8px;
+    padding: 1.4rem 1.8rem;
+    margin: 2rem 0;
+    box-shadow: var(--shadow-sm);
+}
+
+.pillars-quote p {
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--text-heading);
+    line-height: 1.8;
+    margin-bottom: 0.5rem;
+}
+
+.pillars-quote cite {
+    display: block;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    font-style: normal;
+    text-align: right;
+}
+
+/* 底部操作按钮 */
+.history-bottom-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.bottom-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.8rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.bottom-action-btn:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.bottom-action-btn.primary {
+    background: var(--primary-color);
+    color: #ffffff;
+}
+
+.bottom-action-btn.primary:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lift);
+}
+
+.bottom-action-btn.secondary {
+    background: var(--bg-surface);
+    color: var(--text-heading);
+    border: 1px solid var(--border-color);
+}
+
+.bottom-action-btn.secondary:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* 响应式适配 */
+@media (max-width: 1280px) {
+    .history-main-layout {
+        grid-template-columns: minmax(0, 1fr) 200px;
+        gap: 1.5rem;
+    }
+    
+    .history-sidebar-spacer {
+        display: none;
+    }
+
+    .corridor-track-scroll {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 1024px) {
+    .mobile-phase-navbar {
+        display: block;
+    }
+
+    .history-main-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .history-sidebar-spacer,
+    .history-sidebar {
+        display: none;
+    }
+
+    .corridor-track-scroll {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .era-dual-track-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pillars-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .corridor-track-scroll {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .history-era-section {
+        padding: 1.5rem 1.2rem;
+    }
+
+    .socialism-pillars-section {
+        padding: 1.8rem 1.2rem;
+    }
+
+    .pillars-main-title {
+        font-size: 1.6rem;
+    }
+}
+
+/* 减弱动画支持 (Reduced Motion) */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto !important;
+    }
+    .corridor-node-card,
+    .pillar-card,
+    .bottom-action-btn,
+    .concept-link-badge {
+        transition: none !important;
+        transform: none !important;
+    }
 }
